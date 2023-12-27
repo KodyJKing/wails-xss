@@ -11,8 +11,8 @@
         function loop() {
             const t = performance.now();
             const r = 500;
-            const x = Math.floor( Math.sin( t / 1000 ) * r + 100 );
-            const y = Math.floor( Math.cos( t / 1000 ) * r + 100 );
+            const x = Math.floor( ( Math.sin( t / 1000 ) + 1 ) * r );
+            const y = Math.floor( ( Math.cos( t / 1000 ) + 1 ) * r );
             const message = `Ws:${ x }:${ y }`;
             if ( window.chrome && window.chrome.webview )
                 chrome.webview.postMessage( message );
