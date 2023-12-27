@@ -13,9 +13,13 @@
             const x = Math.sin( t / 1000 ) * 100 + 100;
             const y = Math.cos( t / 1000 ) * 100 + 100;
             const message = `Ws:${ x }:${ y }`;
-            chrome.webview.postMessage( message );
+            if ( window.chrome && window.chrome.webview )
+                chrome.webview.postMessage( message );
+            else
+                console.log( message )
             requestAnimationFrame( loop );
         }
+        loop();
 
     </script>
 </body>
