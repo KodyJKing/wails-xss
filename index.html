@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wails XSS</title>
+</head>
+
+<body>
+    <script>
+
+        function loop() {
+            const t = performance.now();
+            const x = Math.sin( t / 1000 ) * 100 + 100;
+            const y = Math.cos( t / 1000 ) * 100 + 100;
+            const message = `Ws:${ x }:${ y }`;
+            chrome.webview.postMessage( message );
+            requestAnimationFrame( loop );
+        }
+
+    </script>
+</body>
+
+</html>
